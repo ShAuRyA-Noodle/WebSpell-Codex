@@ -1,0 +1,237 @@
+/* =========================================================
+   GLOBAL RESET & DESIGN SYSTEM
+   ========================================================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* CORE COLORS */
+  --void-900: #030405;
+  --void-800: #07080c;
+  --panel-700: #0c0f16;
+
+  --blood-500: #ff003c;
+  --blood-300: rgba(255, 0, 60, 0.35);
+  --cyan-ghost: #5ef2d6;
+
+  --text-main: #f1f1f1;
+  --text-muted: #9a9a9a;
+
+  /* TYPOGRAPHY SCALE */
+  --fs-xxs: 0.6rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.9rem;
+  --fs-md: 1.1rem;
+  --fs-lg: 1.6rem;
+  --fs-xl: 2.4rem;
+  --fs-hero: clamp(4rem, 7vw, 6.5rem);
+
+  /* SPACING SCALE */
+  --s-xs: 0.5rem;
+  --s-sm: 1rem;
+  --s-md: 2rem;
+  --s-lg: 4rem;
+  --s-xl: 6rem;
+
+  /* MOTION */
+  --ease-brutal: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================
+   BASE ENVIRONMENT
+   ========================================================= */
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at center, rgba(255,0,60,0.15), transparent 65%),
+    linear-gradient(180deg, var(--void-900), #000);
+  color: var(--text-main);
+  font-family: "Inter", system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--s-xl) var(--s-md);
+}
+
+/* =========================================================
+   HERO / SYSTEM HEADER
+   ========================================================= */
+.hero {
+  text-align: center;
+  margin-bottom: var(--s-xl);
+}
+
+.glitch {
+  position: relative;
+  font-size: var(--fs-hero);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--blood-500);
+  transform: translate(-3px, -2px);
+  opacity: 0.7;
+}
+
+.glitch::after {
+  color: var(--cyan-ghost);
+  transform: translate(3px, 2px);
+  opacity: 0.45;
+}
+
+.subtitle {
+  margin-top: var(--s-sm);
+  font-size: var(--fs-xxs);
+  letter-spacing: 0.45em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   CONTROL PANEL (FORM)
+   ========================================================= */
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: var(--s-sm);
+  margin-bottom: var(--s-xl);
+  align-items: center;
+}
+
+.form-select {
+  background: var(--panel-700);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-main);
+  padding: 1.1rem 1rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--blood-500);
+}
+
+.form-submit {
+  background: var(--blood-500);
+  color: #000;
+  border: none;
+  padding: 1.1rem 3rem;
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease-brutal),
+    box-shadow 0.2s var(--ease-brutal);
+}
+
+.form-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 60px var(--blood-300);
+}
+
+/* =========================================================
+   OUTPUT ZONE
+   ========================================================= */
+.cards {
+  display: grid;
+  place-items: center;
+}
+
+/* =========================================================
+   ASSIGNED TASK CARD (CLASSIFIED FILE)
+   ========================================================= */
+.card-item {
+  position: relative;
+  max-width: 760px;
+  width: 100%;
+  padding: var(--s-lg);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent),
+    var(--panel-700);
+  border-left: 5px solid var(--blood-500);
+  box-shadow:
+    0 60px 160px rgba(0,0,0,0.75),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  animation: emerge 0.45s var(--ease-brutal);
+}
+
+.tag {
+  position: absolute;
+  top: -14px;
+  left: var(--s-md);
+  background: var(--blood-500);
+  color: #000;
+  padding: 0.45rem 0.9rem;
+  font-size: var(--fs-xxs);
+  letter-spacing: 0.35em;
+  font-weight: 800;
+}
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+.card-activity {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.45;
+  margin-bottom: var(--s-md);
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xxs);
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   ERROR / OMEN STATE
+   ========================================================= */
+.tag-error {
+  margin-top: var(--s-lg);
+  text-align: center;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.4em;
+  color: var(--blood-500);
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+@keyframes emerge {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,67 @@
+======================
+EJS TEMPLATE TAGS
+======================
+
+1) <%=  %>   →  Print a variable (SAFE)
+------------------------------------
+Used to display a JavaScript value inside HTML.
+It escapes dangerous HTML for security.
+
+Example:
+<%= day %>
+Output: Monday
+
+
+2) <%-  %>   →  Print raw HTML (UNSAFE)
+------------------------------------
+Used to print HTML code directly.
+Do NOT use with user input.
+
+Example:
+<%- "<b>Hello</b>" %>
+Output: <b>Hello</b>
+
+
+3) <%  %>   →  Run JavaScript logic
+------------------------------------
+Used for if, loops, variables, etc.
+Does NOT print anything.
+
+Example:
+<% let x = 5; %>
+
+
+4) <% if (...) { %>   →  Conditional rendering
+----------------------------------------------
+Used to show HTML only when condition is true.
+
+Example:
+<% if (day === "Sunday") { %>
+  <p>Relax 😎</p>
+<% } %>
+
+
+5) <% for / forEach %>   →  Loops
+--------------------------------
+Used to repeat HTML for arrays or data.
+
+Example:
+<% days.forEach(d => { %>
+  <li><%= d %></li>
+<% }) %>
+
+
+6) <%#  %>   →  EJS comment
+---------------------------
+This is NOT sent to the browser.
+
+Example:
+<%# This will never be seen %>
+
+
+7) <%- include("file") %>   →  Import another EJS file
+----------------------------------------------------
+Used for header, footer, navbar, layouts.
+
+Example:
+<%- include("header") %>

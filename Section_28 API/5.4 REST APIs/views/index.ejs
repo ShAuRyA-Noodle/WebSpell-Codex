@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form Example</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">SECRETS OPS</div>
+      <div class="version">SYSTEM v1.0</div>
+    </header>
+
+    <section class="panel">
+      <h1 class="panel-title">SECRET MANAGEMENT CONSOLE</h1>
+      <p class="panel-subtitle">Authorized operators only</p>
+
+      <form id="myForm" method="post" class="control-grid">
+
+        <div class="field">
+          <label>Secret ID</label>
+          <input type="text" name="id" />
+        </div>
+
+        <div class="field">
+          <label>Secret Message</label>
+          <input type="text" name="secret" />
+        </div>
+
+        <div class="field">
+          <label>Embarrassment Score</label>
+          <input type="number" name="score" />
+        </div>
+
+        <div class="button-grid">
+          <input class="btn green" type="submit" value="GET" formaction="/get-secret">
+          <input class="btn blue" type="submit" value="POST" formaction="/post-secret">
+          <input class="btn purple" type="submit" value="PUT" formaction="/put-secret">
+          <input class="btn yellow" type="submit" value="PATCH" formaction="/patch-secret">
+          <input class="btn red" type="submit" value="DELETE" formaction="/delete-secret">
+        </div>
+      </form>
+    </section>
+
+    <section class="response-panel">
+      <h2>API RESPONSE</h2>
+      <pre><%= content %></pre>
+    </section>
+
+  </div>
+</body>
+
+
+</html>

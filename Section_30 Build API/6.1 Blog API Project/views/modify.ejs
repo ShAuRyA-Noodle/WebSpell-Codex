@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= heading %> | 破壊的創造</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☠</text></svg>">
+</head>
+
+<body>
+  <!-- Blood drip effects -->
+  <div class="blood-drop" style="left: 15%; animation-delay: 0s;"></div>
+  <div class="blood-drop" style="left: 35%; animation-delay: 0.8s;"></div>
+  <div class="blood-drop" style="left: 55%; animation-delay: 1.3s;"></div>
+  <div class="blood-drop" style="left: 75%; animation-delay: 2.1s;"></div>
+
+  <div class="container">
+    <h1 data-text="⸸ <%= heading.toUpperCase() %> ⸸">
+      ⸸ <%= heading.toUpperCase() %> ⸸
+    </h1>
+
+    <div style="text-align: center; margin: 30px 0; font-family: 'Rubik Glitch', cursive; color: #00ff41; text-shadow: 0 0 10px #00ff41; font-size: 1.1rem; letter-spacing: 3px;">
+      <% if (locals.post) { %>
+        ⚡ РЕЖИМ РЕДАКТИРОВАНИЯ АКТИВИРОВАН ⚡<br>
+        <span style="font-size: 0.8rem; opacity: 0.7;">編集モード | MODIFICATION PROTOCOL ENGAGED</span>
+      <% } else { %>
+        ⚠ РЕЖИМ СОЗДАНИЯ АКТИВИРОВАН ⚠<br>
+        <span style="font-size: 0.8rem; opacity: 0.7;">作成モード | CREATION PROTOCOL INITIATED</span>
+      <% } %>
+    </div>
+
+    <% if (locals.post) { %>
+      <form id="editForm" method="post" action="/api/posts/<%=post.id%>">
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.1rem; letter-spacing: 2px; text-shadow: 0 0 5px #ff0000;">
+            ⸸ ЗАГОЛОВОК | TITLE | タイトル
+          </label>
+          <input 
+            type="text" 
+            name="title" 
+            value="<%=post.title %>"
+            required
+            placeholder="Enter the title of your dark chronicle..."
+          >
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.1rem; letter-spacing: 2px; text-shadow: 0 0 5px #ff0000;">
+            ⸸ СОДЕРЖАНИЕ | CONTENT | 内容
+          </label>
+          <textarea 
+            name="content" 
+            rows="12"
+            required
+            placeholder="Inscribe your thoughts into the void..."
+          ><%=post.content %></textarea>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.1rem; letter-spacing: 2px; text-shadow: 0 0 5px #ff0000;">
+            ⸸ АВТОР | AUTHOR | 著者
+          </label>
+          <input 
+            type="text" 
+            name="author" 
+            value="<%=post.author %>"
+            required
+            placeholder="Sign your mark upon the darkness..."
+          >
+        </div>
+
+        <button class="full-width" type="submit">
+          <span style="display: inline-block; transition: opacity 0.3s;">
+            <%= submit.toUpperCase() %>
+          </span>
+        </button>
+
+        <a href="/" style="
+          display: block;
+          text-align: center;
+          margin-top: 20px;
+          color: #00ff41;
+          text-decoration: none;
+          font-family: 'Metal Mania', cursive;
+          letter-spacing: 2px;
+          font-size: 1.1rem;
+          padding: 12px;
+          border: 2px solid #00ff41;
+          transition: all 0.3s ease;
+          background: #0a0a0a;
+          box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        " onmouseover="this.style.background='#00ff41'; this.style.color='#0a0a0a'; this.style.boxShadow='0 0 20px #00ff41';" 
+           onmouseout="this.style.background='#0a0a0a'; this.style.color='#00ff41'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)';">
+          ← ВЕРНУТЬСЯ В ПУСТОТУ | RETURN TO THE VOID
+        </a>
+      </form>
+    <% } else {%>
+      <form id="newPostForm" method="post" action="/api/posts">
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.1rem; letter-spacing: 2px; text-shadow: 0 0 5px #ff0000;">
+            ⸸ ЗАГОЛОВОК | TITLE | タイトル
+          </label>
+          <input 
+            type="text" 
+            name="title" 
+            placeholder="Name your manifestation of chaos..." 
+            required
+          >
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.1rem; letter-spacing: 2px; text-shadow: 0 0 5px #ff0000;">
+            ⸸ СОДЕРЖАНИЕ | CONTENT | 内容
+          </label>
+          <textarea 
+            name="content" 
+            placeholder="Channel the darkness... Let your words bleed onto the digital canvas... 闇を呼び起こせ..." 
+            required 
+            rows="12"
+          ></textarea>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.1rem; letter-spacing: 2px; text-shadow: 0 0 5px #ff0000;">
+            ⸸ АВТОР | AUTHOR | 著者
+          </label>
+          <input 
+            type="text" 
+            name="author" 
+            placeholder="Reveal your identity... Or remain anonymous in the shadows..." 
+            required
+          >
+        </div>
+
+        <button class="full-width" type="submit">
+          <span style="display: inline-block; transition: opacity 0.3s;">
+            <%= submit.toUpperCase() %>
+          </span>
+        </button>
+
+        <a href="/" style="
+          display: block;
+          text-align: center;
+          margin-top: 20px;
+          color: #00ff41;
+          text-decoration: none;
+          font-family: 'Metal Mania', cursive;
+          letter-spacing: 2px;
+          font-size: 1.1rem;
+          padding: 12px;
+          border: 2px solid #00ff41;
+          transition: all 0.3s ease;
+          background: #0a0a0a;
+          box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        " onmouseover="this.style.background='#00ff41'; this.style.color='#0a0a0a'; this.style.boxShadow='0 0 20px #00ff41';" 
+           onmouseout="this.style.background='#0a0a0a'; this.style.color='#00ff41'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)';">
+          ← ОТМЕНИТЬ | ABANDON RITUAL | 儀式を放棄
+        </a>
+      </form>
+    <% } %>
+
+    <!-- Warning box at bottom -->
+    <div style="
+      margin-top: 50px;
+      padding: 25px;
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+      border: 2px solid #8B0000;
+      border-left: 5px solid #ff0000;
+      box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+    ">
+      <div style="color: #ff0000; font-family: 'Metal Mania', cursive; font-size: 1.3rem; margin-bottom: 10px; text-shadow: 0 0 10px #ff0000;">
+        ⚠ ПРЕДУПРЕЖДЕНИЕ | WARNING | 警告 ⚠
+      </div>
+      <div style="color: #e8e8e8; line-height: 1.6; font-size: 0.95rem; opacity: 0.9;">
+        <p style="margin: 8px 0;">
+          <strong style="color: #00ff41;">RU:</strong> Ваши слова станут частью вечной тьмы. Выбирайте их с осторожностью.
+        </p>
+        <p style="margin: 8px 0;">
+          <strong style="color: #00ff41;">EN:</strong> Your words shall become part of the eternal darkness. Choose them with care.
+        </p>
+        <p style="margin: 8px 0;">
+          <strong style="color: #00ff41;">JP:</strong> あなたの言葉は永遠の闇の一部となります。慎重に選んでください。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Form validation with brutal feedback
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        const inputs = this.querySelectorAll('input[required], textarea[required]');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            isValid = false;
+            input.style.borderColor = '#ff0000';
+            input.style.boxShadow = '0 0 20px rgba(255, 0, 0, 0.8), inset 0 0 20px rgba(255, 0, 0, 0.5)';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+              input.style.borderColor = '#8B0000';
+              input.style.boxShadow = 'inset 0 0 10px rgba(139, 0, 0, 0.3)';
+            }, 2000);
+          }
+        });
+        
+        if (!isValid) {
+          e.preventDefault();
+          alert('⚠ ОШИБКА ВВОДА ⚠\n\nALL FIELDS MUST BE FILLED.\n\nすべてのフィールドに入力してください。\n\nTHE VOID DEMANDS COMPLETION.');
+        }
+      });
+    });
+
+    // Character counter for content
+    const textarea = document.querySelector('textarea[name="content"]');
+    if (textarea) {
+      const counter = document.createElement('div');
+      counter.style.cssText = `
+        text-align: right;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        color: #00ff41;
+        font-family: 'Rubik Glitch', cursive;
+        font-size: 0.9rem;
+        text-shadow: 0 0 5px #00ff41;
+      `;
+      textarea.parentNode.appendChild(counter);
+      
+      const updateCounter = () => {
+        const count = textarea.value.length;
+        counter.textContent = `⚡ ${count} SYMBOLS INSCRIBED | ${count} 文字`;
+        
+        if (count > 500) {
+          counter.style.color = '#ff0000';
+          counter.style.textShadow = '0 0 10px #ff0000';
+        } else {
+          counter.style.color = '#00ff41';
+          counter.style.textShadow = '0 0 5px #00ff41';
+        }
+      };
+      
+      textarea.addEventListener('input', updateCounter);
+      updateCounter();
+    }
+
+    // Glitch effect for buttons
+    document.querySelectorAll('button, a').forEach(el => {
+      el.addEventListener('mouseenter', function() {
+        this.style.animation = 'glitch 0.3s';
+      });
+      el.addEventListener('mouseleave', function() {
+        this.style.animation = '';
+      });
+    });
+
+    // Random blood drips
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        const drop = document.createElement('div');
+        drop.className = 'blood-drop';
+        drop.style.left = Math.random() * 100 + '%';
+        drop.style.animationDuration = (2 + Math.random() * 2) + 's';
+        document.body.appendChild(drop);
+        setTimeout(() => drop.remove(), 5000);
+      }
+    }, 2000);
+
+    // Input focus effects
+    document.querySelectorAll('input, textarea').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.style.animation = 'pulse 0.5s';
+      });
+    });
+  </script>
+</body>
+
+</html>

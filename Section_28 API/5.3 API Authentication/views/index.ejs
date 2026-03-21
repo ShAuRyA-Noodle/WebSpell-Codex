@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Secrets Console</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+
+<body>
+  <main class="console">
+
+    <header class="header">
+      <span class="system-id">SYSTEM / SECRETS / v1.0</span>
+      <h1 class="title">AUTHORIZATION CONSOLE</h1>
+      <p class="subtitle">SELECT A SECURITY CONTEXT</p>
+    </header>
+
+    <section class="actions">
+      <a href="/noAuth" class="action danger">NO AUTH</a>
+      <a href="/basicAuth" class="action success">BASIC AUTH</a>
+      <a href="/apiKey" class="action warning">API KEY</a>
+      <a href="/bearerToken" class="action critical">BEARER TOKEN</a>
+    </section>
+
+    <section class="output">
+      <span class="output-label">RESPONSE PAYLOAD</span>
+      <pre class="output-box"><%= content %></pre>
+    </section>
+
+  </main>
+</body>
+</html>

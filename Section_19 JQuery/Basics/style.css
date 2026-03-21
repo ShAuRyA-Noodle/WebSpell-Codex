@@ -1,0 +1,14 @@
+body {
+    background-color: cyan;
+}
+
+.big{
+    font-size: 10rem;
+    color: yellow;
+    font-family: cursive;
+}
+
+.color{
+    background-color: black;
+    color: white;
+}

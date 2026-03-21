@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>絶望ノ記録 | CHRONICLES OF DESPAIR</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☠</text></svg>">
+</head>
+
+<body>
+  <!-- Blood drip effects -->
+  <div class="blood-drop" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="blood-drop" style="left: 25%; animation-delay: 0.5s;"></div>
+  <div class="blood-drop" style="left: 45%; animation-delay: 1s;"></div>
+  <div class="blood-drop" style="left: 60%; animation-delay: 1.5s;"></div>
+  <div class="blood-drop" style="left: 75%; animation-delay: 2s;"></div>
+  <div class="blood-drop" style="left: 90%; animation-delay: 2.5s;"></div>
+
+  <div class="container">
+    <h1 data-text="⸸ CHRONICLES OF THE VOID ⸸">⸸ CHRONICLES OF THE VOID ⸸</h1>
+    
+    <a id="newPostBtn" href="/new">
+      <span style="display: inline-block; transition: opacity 0.3s;">SUMMON NEW ENTRY</span>
+    </a>
+
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li>
+          <h2><%=post.title%></h2>
+          <small>
+            ⏱ TIMESTAMP: <%=new Date(post.date).toLocaleString('ru-RU', { 
+              year: 'numeric', 
+              month: '2-digit', 
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit'
+            })%> UTC
+          </small>
+          <p>
+            <%=post.content%>
+          </p>
+          <small style="display: block; margin-top: 15px; color: #e8e8e8; opacity: 0.8;">
+            <span style="font-family: 'Metal Mania', cursive; letter-spacing: 2px;">
+              ✎ SCRIBED BY:
+            </span> 
+            <span style="color: #ff0000; text-shadow: 0 0 10px #ff0000;">
+              <%=post.author%>
+            </span>
+          </small>
+          
+          <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <a class="edit" href="/edit/<%= post.id %>">
+              <span style="display: inline-block; transition: opacity 0.3s;">MODIFY</span>
+            </a>
+            <a class="delete" href="/api/posts/delete/<%= post.id %>" 
+               onclick="return confirm('⚠ ПРЕДУПРЕЖДЕНИЕ ⚠\n\nTHIS ENTRY WILL BE ERASED FROM EXISTENCE.\n\nこのエントリは永遠に消去されます。\n\nPROCEED WITH ANNIHILATION?');">
+              <span style="display: inline-block; transition: opacity 0.3s;">OBLITERATE</span>
+            </a>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+
+    <% if (posts.length === 0) { %>
+      <div style="text-align: center; margin: 100px 0; padding: 60px; background: linear-gradient(135deg, #1a1a1a, #2d1b00); border: 3px solid #8B0000; box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);">
+        <h2 style="font-family: 'Nosifer', cursive; font-size: 2.5rem; color: #ff0000; text-shadow: 0 0 20px #ff0000; margin-bottom: 20px;">
+          虚無 | THE VOID AWAITS
+        </h2>
+        <p style="font-size: 1.2rem; color: #00ff41; font-family: 'Rubik Glitch', cursive; text-shadow: 0 0 10px #00ff41;">
+          NO ENTRIES DETECTED IN THE ABYSS
+        </p>
+        <p style="margin-top: 20px; color: #e8e8e8; opacity: 0.7;">
+          Начните своё путешествие в тьму... Summon your first chronicle...
+        </p>
+      </div>
+    <% } %>
+  </div>
+
+  <script>
+    // Glitch effect for buttons on hover
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', function() {
+        this.style.animation = 'glitch 0.3s';
+      });
+      el.addEventListener('mouseleave', function() {
+        this.style.animation = '';
+      });
+    });
+
+    // Random blood drips
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        const drop = document.createElement('div');
+        drop.className = 'blood-drop';
+        drop.style.left = Math.random() * 100 + '%';
+        drop.style.animationDuration = (2 + Math.random() * 2) + 's';
+        document.body.appendChild(drop);
+        setTimeout(() => drop.remove(), 5000);
+      }
+    }, 2000);
+
+    // Cursor trail effect
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.95) {
+        const trail = document.createElement('div');
+        trail.style.position = 'fixed';
+        trail.style.width = '3px';
+        trail.style.height = '3px';
+        trail.style.background = '#ff0000';
+        trail.style.borderRadius = '50%';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        trail.style.pointerEvents = 'none';
+        trail.style.zIndex = '9999';
+        trail.style.boxShadow = '0 0 10px #ff0000';
+        trail.style.animation = 'fade-out 1s forwards';
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 1000);
+      }
+    });
+
+    // Fade out animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fade-out {
+        to {
+          opacity: 0;
+          transform: scale(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+
+</html>

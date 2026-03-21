@@ -1,0 +1,156 @@
+/* =====================================================
+   RESET + DESIGN TOKENS
+   ===================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-void: #050507;
+  --bg-panel: #0b0f16;
+
+  --red: #ff003c;
+  --green: #2ecc71;
+  --yellow: #f1c40f;
+
+  --text-main: #f1f1f1;
+  --text-muted: #8a8f98;
+
+  --fs-xs: 0.7rem;
+  --fs-sm: 0.85rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.6rem;
+  --fs-xl: 2.8rem;
+
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =====================================================
+   BASE
+   ===================================================== */
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at center, rgba(255,0,60,0.15), transparent 60%),
+    linear-gradient(180deg, var(--bg-void), #000);
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+}
+
+/* =====================================================
+   CONSOLE LAYOUT
+   ===================================================== */
+.console {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+.header {
+  margin-bottom: var(--space-lg);
+}
+
+.system-id {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.35em;
+  color: var(--text-muted);
+}
+
+.title {
+  font-size: var(--fs-xl);
+  font-weight: 900;
+  margin: 0.6rem 0;
+}
+
+.subtitle {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+}
+
+/* =====================================================
+   ACTIONS
+   ===================================================== */
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.action {
+  text-decoration: none;
+  padding: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  font-size: var(--fs-xs);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--bg-panel);
+  color: var(--text-main);
+  transition: all 0.25s var(--ease);
+}
+
+.action:hover {
+  transform: translateY(-4px);
+}
+
+/* Action states */
+.danger:hover { box-shadow: 0 0 40px rgba(255,0,60,0.5); }
+.success:hover { box-shadow: 0 0 40px rgba(46,204,113,0.5); }
+.warning:hover { box-shadow: 0 0 40px rgba(241,196,15,0.5); }
+.critical:hover { box-shadow: 0 0 40px rgba(255,0,60,0.9); }
+
+/* =====================================================
+   OUTPUT
+   ===================================================== */
+.output {
+  position: relative;
+}
+
+.output-label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.35em;
+  color: var(--text-muted);
+}
+
+.output-box {
+  margin-top: var(--space-sm);
+  background: var(--bg-panel);
+  padding: var(--space-md);
+  border-left: 5px solid var(--red);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  max-height: 420px;
+  overflow-y: auto;
+  box-shadow:
+    0 50px 140px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  animation: appear 0.35s var(--ease);
+}
+
+/* =====================================================
+   MOTION
+   ===================================================== */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
