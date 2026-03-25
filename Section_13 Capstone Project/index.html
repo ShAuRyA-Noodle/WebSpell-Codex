@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Root of the HTML document -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Supports all characters -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes site responsive on mobile -->
+
+    <title>ShAuRyA | Portfolio</title>
+    <!-- Title shown in browser tab -->
+
+    <!-- Google Fonts for custom typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Sacramento&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== GLOBAL STYLES ========== */
+        body {
+            margin: 0;                 /* Remove default spacing */
+            text-align: center;       /* Center all text */
+            font-family: "Merriweather", serif; /* Main font */
+            color: #40514e;           /* Default text color */
+            background: #fff;        /* White background */
+        }
+
+        /* ========== HERO SECTION ========== */
+        .top {
+            background: linear-gradient(#e4f9f5, #ffffff); /* Sky-like background */
+            height: 100vh;           /* Full screen height */
+            position: relative;      /* Allows absolute children */
+            overflow: hidden;        /* Hides overflowed images */
+        }
+
+        /* Center text in hero */
+        .hero-text {
+            position: absolute;      
+            top: 40%;                
+            left: 50%;               
+            transform: translate(-50%, -50%); /* True center */
+        }
+
+        h1 {
+            font-family: "Sacramento", cursive; /* Stylish font */
+            font-size: 5rem;        
+            margin: 0;
+            color: #66bfbf;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+        }
+
+        /* ========== FLOATING IMAGES ========== */
+        .img {
+            position: absolute;     
+            width: 220px;
+            animation: float 6s ease-in-out infinite; /* Up-down motion */
+        }
+
+        /* Position each illustration */
+        .img1 { top: 40px; left: 60px; }
+        .img2 { top: 40px; right: 60px; }
+        .img3 { bottom: 40px; left: 80px; }
+        .img4 { bottom: 40px; right: 80px; }
+
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .mid {
+            padding: 80px 20px;
+        }
+
+        .profile img {
+            width: 140px;
+            border-radius: 50%;      /* Makes image circular */
+            border: 4px solid #66bfbf;
+        }
+
+        .intro {
+            width: 50%;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        /* Decorative divider */
+        hr {
+            border: dotted #66bfbf 6px;
+            border-bottom: none;
+            width: 6%;
+            margin: 70px auto;
+        }
+
+        /* ========== SKILLS GRID ========== */
+        .parent {
+            display: grid;                           /* Grid layout */
+            grid-template-columns: 1fr 2fr;         /* 2-column layout */
+            gap: 40px;
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: left;
+            align-items: center;
+        }
+
+        .parent img {
+            width: 120px;
+            border-radius: 10px;
+        }
+
+        .coding, .winger {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ========== CONTACT BUTTON ========== */
+        .contactme p {
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #66bfbf;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: 0.3s; /* Smooth hover */
+        }
+
+        .btn:hover {
+            background: #3ca6a6;
+        }
+
+        /* ========== FOOTER ========== */
+        .bottom-container {
+            background: #66bfbf;
+            padding: 40px 0;
+        }
+
+        .footer-link {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            color: #eaf6f6;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .img { width: 120px; }    /* Smaller images */
+            h1 { font-size: 3rem; }
+            h2 { font-size: 1rem; }
+
+            .intro,
+            .contactme p {
+                width: 85%;
+            }
+
+            .parent {
+                grid-template-columns: 1fr; /* Stack items */
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HERO SECTION -->
+    <div class="top">
+        <!-- Decorative floating images -->
+        <img src="./undraw_air-support_dqct.svg" class="img img1">
+        <img src="./undraw_i-can-fly_0cuj.svg" class="img img2">
+        <img src="./undraw_beach-day_cnsv.svg" class="img img3">
+        <img src="./undraw_everyday-life_5bqa.svg" class="img img4">
+
+        <!-- Main heading -->
+        <div class="hero-text">
+            <h1>I'm ShAuRyA</h1>
+            <h2>a coder making chaos 🔥</h2>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="mid">
+        <div class="profile">
+            <img src="./Cutie.jpg" alt="Profile">
+            <h2>Salut Comment Ça Va ?</h2>
+            <p class="intro">
+                Short intro about you and your personality.
+            </p>
+        </div>
+
+        <hr>
+
+        <!-- SKILLS -->
+        <div class="skills">
+            <h2>My Skills</h2>
+            <div class="parent">
+                <img src="https://media1.giphy.com/media/3xz2Bw12fe9iyG06v6/giphy.gif" alt="Typing">
+                <div class="coding">
+                    <h3>Design & Development</h3>
+                    Your dev journey.
+                </div>
+
+                <img src="https://media2.giphy.com/media/1AJQFv5osSVRz8Earn/giphy.gif" alt="Momos">
+                <div class="winger">
+                    Your fun personal skill.
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- CONTACT -->
+        <div class="contactme">
+            <h2>Get in Touch</h2>
+            <p>Invitation to contact.</p>
+            <a class="btn" href="mailto:ilove@momos.com">Ping Me</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="bottom-container">
+        <a class="footer-link" href="https://github.com/ShauryaPunj">GitHub</a>
+        <a class="footer-link" href="#">Twitter</a>
+        <p class="copyright">© ShAuRyA @ The H3llHole.</p>
+    </div>
+
+</body>
+</html>
