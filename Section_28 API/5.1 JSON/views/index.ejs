@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Indian Veg Recipes 🇮🇳</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <h1>Desi Food Court 🍛</h1>
+      <p class="subtitle">Select a classic Indian veg dish</p>
+    </header>
+
+    <form action="/recipe" method="POST" class="buttons">
+      <button name="choice" value="chole">🫓 Chole Bhature</button>
+      <button name="choice" value="rajma">🍚 Rajma Chawal</button>
+      <button name="choice" value="dal">🥣 Dal Makhani</button>
+    </form>
+
+    <div id="recipeContainer">
+      <% if (!recipe) { %>
+        <p class="hint">Select a dish above 👆</p>
+      <% } else { %>
+
+        <div class="card">
+          <h2><%= recipe.name %></h2>
+          <p class="price">₹<%= recipe.price %></p>
+
+          <h3>Main</h3>
+          <p>
+            <%= recipe.ingredients.protein.name %> —
+            <%= recipe.ingredients.protein.preparation %>
+          </p>
+
+          <h3>Gravy</h3>
+          <p>
+            <%= recipe.ingredients.salsa.name %>
+            (<%= recipe.ingredients.salsa.spiciness %>)
+          </p>
+
+          <h3>Sides</h3>
+          <ul>
+            <% recipe.ingredients.toppings.forEach(item => { %>
+              <li><%= item.name %> — <%= item.quantity %></li>
+            <% }) %>
+          </ul>
+        </div>
+
+      <% } %>
+    </div>
+
+  </div>
+</body>
+
+</html>

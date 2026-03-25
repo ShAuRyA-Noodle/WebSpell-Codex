@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Day of the Week</title>
+<style>
+  body {
+    background: radial-gradient(circle at top, #ff0033, #6b0000, #120000);
+    color: #fff;
+    font-family: "Segoe UI", Arial, sans-serif;
+    text-align: center;
+    padding-top: 150px;
+    height: 100vh;
+    margin: 0;
+
+    /* subtle glow */
+    box-shadow: inset 0 0 200px rgba(255, 0, 0, 0.4);
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    text-shadow: 
+      0 0 10px #ff0033,
+      0 0 20px #ff0033,
+      0 0 40px #8b0000;
+    animation: flicker 2s infinite alternate;
+  }
+
+  p {
+    font-size: 1.6rem;
+    color: #ffdada;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    margin-top: 20px;
+  }
+
+  /* Subtle neon flicker animation */
+  @keyframes flicker {
+    0% {
+      opacity: 1;
+      text-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033;
+    }
+    50% {
+      opacity: 0.85;
+      text-shadow: 0 0 5px #ff0033, 0 0 10px #8b0000;
+    }
+    100% {
+      opacity: 1;
+      text-shadow: 0 0 15px #ff0033, 0 0 30px #ff0033;
+    }
+  }
+</style>
+  </head>
+
+  <body>
+    <h1>Today is <%= day %></h1>
+    <p><%= message %></p>
+  </body>
+<!-- 
+<%= day %> will be replaced by JavaScript value
+
+<%= message %> will be replaced by JavaScript value -->

@@ -1,0 +1,620 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Rubik+Glitch&display=swap');
+
+:root {
+  --blood-red: #8B0000;
+  --death-black: #0a0a0a;
+  --corpse-grey: #1a1a1a;
+  --bone-white: #e8e8e8;
+  --toxic-green: #00ff41;
+  --hell-fire: #ff0000;
+  --shadow-purple: #4a0e4e;
+  --decay-brown: #2d1b00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--death-black);
+  color: var(--bone-white);
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 0, 0, 0.03) 2px,
+      rgba(139, 0, 0, 0.03) 4px
+    ),
+    radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 10, 0.8) 100%);
+  pointer-events: none;
+  z-index: 1;
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, var(--death-black) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-family: 'Metal Mania', cursive;
+  font-size: clamp(3rem, 8vw, 7rem);
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--hell-fire);
+  text-shadow: 
+    0 0 10px var(--hell-fire),
+    0 0 20px var(--hell-fire),
+    0 0 40px var(--blood-red),
+    0 0 80px var(--blood-red),
+    5px 5px 0 var(--death-black),
+    10px 10px 0 rgba(139, 0, 0, 0.5);
+  letter-spacing: 8px;
+  animation: glitch 3s infinite, flicker 0.5s infinite alternate;
+  position: relative;
+  text-transform: uppercase;
+}
+
+h1::before {
+  content: 'MEMENTO MORI';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.3em;
+  letter-spacing: 15px;
+  color: var(--toxic-green);
+  text-shadow: 0 0 10px var(--toxic-green);
+  opacity: 0.7;
+  animation: pulse 2s infinite;
+}
+
+h1::after {
+  content: '絶望の深淵';
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.25em;
+  letter-spacing: 10px;
+  color: var(--bone-white);
+  opacity: 0.5;
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: translate(0);
+  }
+  92% {
+    transform: translate(-5px, 2px);
+  }
+  94% {
+    transform: translate(5px, -2px);
+  }
+  96% {
+    transform: translate(-2px, 3px);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.05);
+  }
+}
+
+#newPostBtn {
+  display: inline-block;
+  margin: 40px auto;
+  padding: 18px 45px;
+  background: linear-gradient(45deg, var(--blood-red), var(--shadow-purple));
+  color: var(--bone-white);
+  text-decoration: none;
+  font-family: 'Metal Mania', cursive;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  border: 3px solid var(--hell-fire);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 0 20px var(--blood-red),
+    inset 0 0 20px rgba(139, 0, 0, 0.3);
+  display: block;
+  text-align: center;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#newPostBtn::before {
+  content: '⚠ СОЗДАТЬ ⚠';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.9em;
+}
+
+#newPostBtn:hover::before {
+  opacity: 1;
+}
+
+#newPostBtn:hover {
+  background: linear-gradient(45deg, var(--hell-fire), var(--blood-red));
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 40px var(--hell-fire),
+    inset 0 0 30px rgba(255, 0, 0, 0.5);
+  letter-spacing: 6px;
+}
+
+#newPostBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+#postsList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+#postsList li {
+  background: linear-gradient(135deg, var(--corpse-grey), var(--decay-brown));
+  border: 2px solid var(--blood-red);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 5px 25px rgba(139, 0, 0, 0.5),
+    inset 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+#postsList li::before {
+  content: '☠';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 3rem;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#postsList li:hover::before {
+  opacity: 0.3;
+  transform: scale(1.5) rotate(180deg);
+  animation: none;
+}
+
+#postsList li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+#postsList li:hover::after {
+  left: 100%;
+}
+
+#postsList li:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--hell-fire);
+  box-shadow: 
+    0 15px 50px rgba(255, 0, 0, 0.8),
+    inset 0 0 50px rgba(139, 0, 0, 0.3);
+}
+
+#postsList li h2 {
+  font-family: 'Nosifer', cursive;
+  font-size: 1.8rem;
+  color: var(--hell-fire);
+  margin-bottom: 15px;
+  text-shadow: 
+    2px 2px 0 var(--death-black),
+    0 0 10px var(--blood-red);
+  letter-spacing: 2px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+
+#postsList li h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--hell-fire), transparent);
+  margin-top: 10px;
+}
+
+#postsList li small {
+  display: block;
+  color: var(--toxic-green);
+  font-family: 'Rubik Glitch', cursive;
+  font-size: 0.85rem;
+  margin: 8px 0;
+  text-shadow: 0 0 5px var(--toxic-green);
+  letter-spacing: 1px;
+}
+
+#postsList li p {
+  color: var(--bone-white);
+  line-height: 1.7;
+  margin: 20px 0;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px var(--death-black);
+}
+
+.edit, .delete {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 10px 0 0;
+  text-decoration: none;
+  font-family: 'Metal Mania', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 2px solid;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.edit {
+  background: var(--corpse-grey);
+  color: var(--toxic-green);
+  border-color: var(--toxic-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.edit::before {
+  content: '⚡ РЕДАКТИРОВАТЬ';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.85em;
+}
+
+.edit:hover::before {
+  opacity: 1;
+}
+
+.edit:hover {
+  background: var(--toxic-green);
+  color: var(--death-black);
+  box-shadow: 0 0 20px var(--toxic-green);
+  transform: translateY(-2px);
+}
+
+.delete {
+  background: var(--death-black);
+  color: var(--hell-fire);
+  border-color: var(--hell-fire);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.delete::before {
+  content: '💀 УНИЧТОЖИТЬ';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.85em;
+}
+
+.delete:hover::before {
+  opacity: 1;
+}
+
+.delete:hover {
+  background: var(--hell-fire);
+  color: var(--bone-white);
+  box-shadow: 0 0 20px var(--hell-fire);
+  transform: translateY(-2px);
+}
+
+/* Form Styles */
+form {
+  background: linear-gradient(135deg, var(--corpse-grey), var(--decay-brown));
+  padding: 40px;
+  border: 3px solid var(--blood-red);
+  box-shadow: 
+    0 10px 40px rgba(139, 0, 0, 0.6),
+    inset 0 0 50px rgba(0, 0, 0, 0.7);
+  max-width: 800px;
+  margin: 40px auto;
+  position: relative;
+}
+
+form::before {
+  content: 'ВХОД В АД';
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: var(--death-black);
+  padding: 5px 20px;
+  color: var(--hell-fire);
+  font-family: 'Rubik Glitch', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  border: 1px solid var(--blood-red);
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0;
+  background: var(--death-black);
+  border: 2px solid var(--blood-red);
+  color: var(--bone-white);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(139, 0, 0, 0.3);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: rgba(232, 232, 232, 0.4);
+  font-style: italic;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--hell-fire);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 0, 0.5),
+    inset 0 0 20px rgba(139, 0, 0, 0.5);
+  background: var(--corpse-grey);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 200px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+button[type="submit"],
+.full-width {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(45deg, var(--blood-red), var(--shadow-purple));
+  color: var(--bone-white);
+  border: 3px solid var(--hell-fire);
+  font-family: 'Metal Mania', cursive;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
+button[type="submit"]::before,
+.full-width::before {
+  content: '⚠ АКТИВИРОВАТЬ ⚠';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button[type="submit"]:hover::before,
+.full-width:hover::before {
+  opacity: 1;
+}
+
+button[type="submit"]:hover,
+.full-width:hover {
+  background: linear-gradient(45deg, var(--hell-fire), var(--blood-red));
+  box-shadow: 0 0 40px var(--hell-fire);
+  transform: scale(1.02);
+  letter-spacing: 6px;
+}
+
+button[type="submit"]:active,
+.full-width:active {
+  transform: scale(0.98);
+}
+
+/* Glitch effect for headings in forms */
+.container > h1 {
+  position: relative;
+}
+
+.container > h1::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -2px 0 var(--toxic-green);
+  top: 0;
+  color: var(--hell-fire);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(76px, 9999px, 63px, 0);
+  }
+  5% {
+    clip: rect(94px, 9999px, 15px, 0);
+  }
+  10% {
+    clip: rect(47px, 9999px, 8px, 0);
+  }
+  15% {
+    clip: rect(65px, 9999px, 99px, 0);
+  }
+  20% {
+    clip: rect(12px, 9999px, 85px, 0);
+  }
+  25% {
+    clip: rect(88px, 9999px, 34px, 0);
+  }
+  30% {
+    clip: rect(22px, 9999px, 71px, 0);
+  }
+  35% {
+    clip: rect(55px, 9999px, 28px, 0);
+  }
+  40% {
+    clip: rect(91px, 9999px, 42px, 0);
+  }
+  45% {
+    clip: rect(18px, 9999px, 67px, 0);
+  }
+  50% {
+    clip: rect(73px, 9999px, 11px, 0);
+  }
+  100% {
+    clip: rect(33px, 9999px, 89px, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #postsList {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+  
+  form {
+    padding: 25px;
+  }
+  
+  #newPostBtn {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
+}
+
+/* Blood drip animation */
+@keyframes blood-drip {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.blood-drop {
+  position: fixed;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, var(--blood-red));
+  animation: blood-drip 3s linear infinite;
+  z-index: 0;
+}

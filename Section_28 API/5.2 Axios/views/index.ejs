@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <title>I'm Bored</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1 class="glitch" data-text="I'M BORED">
+        I'M BORED
+      </h1>
+      <p class="subtitle">SYSTEM WILL ASSIGN AN ACTIVITY</p>
+    </header>
+
+    <form action="/" method="POST" class="form">
+      <select name="type" class="form-select">
+        <option value="">ANY TYPE</option>
+        <option value="education">EDUCATION</option>
+        <option value="charity">CHARITY</option>
+        <option value="recreational">RECREATIONAL</option>
+        <option value="relaxation">RELAXATION</option>
+        <option value="busywork">BUSYWORK</option>
+        <option value="social">SOCIAL</option>
+        <option value="diy">DIY</option>
+        <option value="music">MUSIC</option>
+      </select>
+
+      <select name="participants" class="form-select">
+        <option value="">ANY NUMBER</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
+      <button type="submit" class="form-submit">
+        EXECUTE
+      </button>
+    </form>
+
+    <section class="cards">
+      <% if (activity) { %>
+        <article class="card-item danger">
+          <span class="tag">ASSIGNED TASK</span>
+          <h2 class="card-activity"><%= activity.activity %></h2>
+
+          <div class="card-info">
+            <span class="card-type">TYPE: <%= activity.type %></span>
+            <span class="card-participants">
+              PARTICIPANTS: <%= activity.participants %>
+            </span>
+          </div>
+        </article>
+      <% } %>
+
+      <% if (error) { %>
+        <div class="tag-error glitch" data-text="<%= error %>">
+          <%= error %>
+        </div>
+      <% } %>
+    </section>
+  </div>
+</body>
+
+</html>

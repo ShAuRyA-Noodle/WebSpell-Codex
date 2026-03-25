@@ -1,0 +1,86 @@
+[
+  {
+    "id": "0001",
+    "type": "veg",
+    "name": "Chole Bhature",
+    "price": 149,
+    "ingredients": {
+      "protein": {
+        "name": "Chole (Chickpeas)",
+        "preparation": "Boiled and slow-cooked with Punjabi spices"
+      },
+      "salsa": {
+        "name": "Onion Tomato Masala",
+        "spiciness": "Medium"
+      },
+      "toppings": [
+        {
+          "name": "Bhature",
+          "quantity": "2 pieces",
+          "ingredients": ["Maida", "Curd", "Baking Soda", "Oil"]
+        },
+        {
+          "name": "Onion Salad",
+          "quantity": "1 bowl",
+          "ingredients": ["Onion", "Lemon", "Green Chilli"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0002",
+    "type": "veg",
+    "name": "Rajma Chawal",
+    "price": 129,
+    "ingredients": {
+      "protein": {
+        "name": "Rajma (Kidney Beans)",
+        "preparation": "Soaked overnight and pressure cooked"
+      },
+      "salsa": {
+        "name": "Tomato Ginger Gravy",
+        "spiciness": "Mild"
+      },
+      "toppings": [
+        {
+          "name": "Steamed Rice",
+          "quantity": "1 plate",
+          "ingredients": ["Basmati Rice", "Salt"]
+        },
+        {
+          "name": "Ghee Tadka",
+          "quantity": "1 spoon",
+          "ingredients": ["Desi Ghee", "Jeera"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0003",
+    "type": "veg",
+    "name": "Dal Makhani",
+    "price": 169,
+    "ingredients": {
+      "protein": {
+        "name": "Black Urad Dal",
+        "preparation": "Slow cooked overnight"
+      },
+      "salsa": {
+        "name": "Butter Cream Gravy",
+        "spiciness": "Low"
+      },
+      "toppings": [
+        {
+          "name": "Butter Naan",
+          "quantity": "2 pieces",
+          "ingredients": ["Maida", "Butter", "Yeast"]
+        },
+        {
+          "name": "Fresh Cream",
+          "quantity": "1 spoon",
+          "ingredients": ["Fresh Cream"]
+        }
+      ]
+    }
+  }
+]
