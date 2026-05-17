@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /Section_28 API/5.5 Secrets Project
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: npm
+    directory: /Section_30 Build API/6.0 DIY API
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: npm
+    directory: /Section_30 Build API/6.1 Blog API Project
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
