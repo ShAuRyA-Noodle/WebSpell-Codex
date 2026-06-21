@@ -8,10 +8,10 @@ const API_URL = "https://secrets-api.appbrewery.com";
 /* ======================================================
    AUTH CREDENTIALS (FILL THESE IN)
    ====================================================== */
-const yourUsername = "shaurya123";
-const yourPassword = "1234";
-const yourAPIKey = "713db145-9f32-47e1-8976-965781a9cdb3";
-const yourBearerToken = "f53cd0c0-be4a-4339-887a-e16c90cf5f6a";
+const yourUsername = "";
+const yourPassword = "";
+const yourAPIKey = "";
+const yourBearerToken = "";
 
 app.use(express.static("public"));
 
