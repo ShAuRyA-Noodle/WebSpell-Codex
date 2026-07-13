@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.18.0",
-    "body-parser": "^1.20.3",
+    "body-parser": "^1.20.6",
     "ejs": "^3.1.9",
     "express": "^4.21.2"
   },
